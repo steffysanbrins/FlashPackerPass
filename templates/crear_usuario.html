@@ -1,0 +1,64 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block extracss %}
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/estilologin.css' %}">
+{% endblock extracss %}
+
+{% block titulo %}
+    Registrarse | FlashPackerPass
+{% endblock titulo %}
+
+{% block contactos %}
+    <!-- CONTACTOS -->
+    <div class="container-fluid justify-content-center contacto pt-2 pb-2">
+        <div class="row contacto">
+            <div class="col-12 text-center col-sm-6 col-md-6">
+                <span><a class="text-dark" href=""> +569 87657093 |</a></span>
+               <span><a class="text-dark" href=""> contacto@gmail.com </a></span>
+            </div>
+            <div class="col-12 text-center col-sm-5 col-md-5">
+                <span class="mx-2"><a href="#">Iniciar Sesion</a></span>
+                <span class="mx-2"><a href="{% url 'usuario:registrar_usuario' %}">Registrarse</a></span>
+            </div>
+        </div>
+    </div>
+    <!-- CONTACTOS --> 
+{% endblock contactos %}
+
+{% block navbar %}
+{% endblock navbar %}
+
+{% block body %}
+    <!-- LOGIN -->
+    <div class="container">
+        <div class="row abs-center">
+            <div class="col-7 col-sm-7 col-md-5 cuadro">
+                <div class="card-header">
+                    <h2 class="display-5 text-center"> Registrar Usuario </h2>
+                    <hr class="bg-dark">
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="">
+                        {% csrf_token %}
+                        {{ form.as_p }}    
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary justify-content-center">
+                                Registrarse
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- LOGIN -->
+{% endblock body %}
+
+
+{% block footer %}
+    <footer class="footer">
+        <span> Derechos Reservados | Proyecto IVARAS &copy </span>
+    </footer>
+{% endblock footer %}

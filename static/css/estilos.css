@@ -1,0 +1,18 @@
+/* Carousel Styles */
+.carousel-indicators .active {
+    background-color: #2980b9;
+}
+
+.carousel-inner img {
+    width: 100%;
+    max-height: 460px
+}
+
+/* FOOTER */
+.footer {
+  background-color: #fab940; opacity: .8;
+  line-height: 3;
+  text-align: center;
+  width: 100%;
+  opacity: .8;
+}

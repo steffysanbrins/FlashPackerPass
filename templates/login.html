@@ -1,0 +1,49 @@
+{% load static %}
+{% extends "index.html" %}
+
+{% block titulo %}
+    Iniciar Sesion
+{% endblock titulo %}
+
+{% block navbar % }
+{% endblock navbar %}
+
+{% block body %}
+    <!-- LOGIN -->
+    <div class="container">
+        <div class="row abs-center">
+            <div class="col-7 col-sm-7 col-md-5 cuadro">
+                <h2 class="display-5 text-center"> Ingresar </h2>
+                <hr class="bg-dark">
+                <form class="" action="">
+                    {% csrf_token %}
+                    <div class="row form-group text-center justify-content-center">
+                        <label class="col-form-label col-md-8" for=""> Usuario </label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="text" name="username">
+                        </div>
+                    </div>
+                    <div class="row form-group text-center justify-content-center">
+                        <label class="col-form-label col-md-8" for="">Contraseña</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="password" name="password" id="">
+                        </div>
+                    </div>
+                    <div class="text-center mb-3">
+                        <button class="btn btn-primary"> Ingresar</button>
+                    </div>
+                </form>
+                <p class="text-center"> <a href=""> ¿Haz olvidado la contraseña? </a> </p>
+                <p class="text-center"> ¿No tienes cuenta? <a href=""> Crear Cuenta </a> </p>
+            </div>
+        </div>
+    </div>
+    <!-- LOGIN -->
+{% endblock body %}
+
+{% block footer %}
+    <footer class="footer">
+        <span> Derechos Reservados | Proyecto IVARAS &copy </span>
+    </footer>
+{% endblock footer }
+    

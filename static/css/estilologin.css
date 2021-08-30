@@ -1,0 +1,55 @@
+body {
+    background-image: url(/img/body.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0;
+    height: 100vh;
+}
+
+/* FORMULARIO */
+.abs-center {
+    align-items: center;
+    justify-content: center;
+    min-height: 90vh;
+}
+
+/* CUADRO FORMULARIO */
+.cuadro {
+    border-style: solid;
+    border-color: rgb(147, 148, 142);
+    border-radius: 10px;
+    background-color: rgb(229, 231, 225);
+    opacity: .8;
+}
+
+
+/* TEXTO BAJO FORMULARIO */
+.cuadro p {
+    color: rgb(12, 12, 12);
+    
+}
+
+.cuadro p a {
+    color: #fab940;
+    font-weight: bolder;
+}
+  
+.cuadro p a:hover {
+    color: rgb(255, 153, 0);
+    font-weight: bolder;
+    text-decoration: none ;
+}
+
+/* FOOTER */
+.footer {
+    background-color: #fab940;
+    line-height: 3;
+    text-align: center;
+    width: 100%;
+    opacity: .8;
+}
+
+.contacto {
+    background-color: #fab940;
+    opacity: .8;
+}
