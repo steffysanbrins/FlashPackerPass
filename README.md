@@ -1,7 +1,7 @@
 # flashpackerpass
-hola mundo 
 
-''' 
-*hola mundo x3*
+'''
+
+pip install pillow
 
 '''
