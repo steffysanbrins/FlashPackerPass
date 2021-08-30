@@ -1,7 +1,7 @@
 # flashpackerpass
 
-'''
+```
+Librerias:
+*pip install pillow
 
-pip install pillow
-
-'''
+```
