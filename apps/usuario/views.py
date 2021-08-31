@@ -10,7 +10,7 @@ class ListadoUsuario(ListView):
     model = Usuario
     template_name = 'usuarios/listar_usuario.html'
     def get_queryset(self):
-        return self.model.objects.filter(user_active = True)
+        return self.model.objects.filter(is_active = True)
 
 class RegistrarUsuario(CreateView):
     model = Usuario

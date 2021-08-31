@@ -33,25 +33,27 @@ de tener que escribir codigos de seguridad en un nuevo modelo, y diversos otros 
 class UsuarioManager(BaseUserManager):
     #definimos dos funciones
     #una, permite crear un usuario basico
-    def _create_user(self, rut_user, email_user, password, user_administrador, is_superuser, **extra_fields):
+    def _create_user(self, rut_user, email_user, nombre_user, password, is_staff, is_superuser, **extra_fields):
         if not email_user:
             raise ValueError('El email debe ser obligatorio')
         email_user = self.normalize_email(email_user)
         usuario = self.model(
             rut_user = rut_user,
             email_user = email_user,
-            user_active = True,
-            user_administrador = user_administrador,
+            nombre_user = nombre_user,
+            is_active = True,
+            is_staff = is_staff,
             is_superuser = is_superuser,
             **extra_fields
         )
         usuario.set_password(password)
         usuario.save(using = self._db)
         return usuario
-    def create_user(self, rut_user, email_user, password = None, **extra_fields):
-        return self._create_user(rut_user, email_user, password, False, False, **extra_fields)
-    def create_superuser(self, rut_user, email_user, password, **extra_fields):
-        return self._create_user(rut_user, email_user, password, True, True, **extra_fields)
+    def create_user(self, rut_user, email_user, nombre_user, password = None, **extra_fields):
+        return self._create_user(rut_user, email_user, nombre_user, password, False, False, **extra_fields)
+
+    def create_superuser(self, rut_user, email_user, nombre_user, password, **extra_fields):
+        return self._create_user(rut_user, email_user, nombre_user, password, True, True, **extra_fields)
 
 
 #idea de roles, cuando se cree una cuenta de usuario nueva, por defecto tendra la sesion activa en True, o sea, que puede iniciar sesion
@@ -62,15 +64,15 @@ class UsuarioManager(BaseUserManager):
 
 #heredamos el AbstractBaseUser en el modelo Usuario para definir los campos
 class Usuario(AbstractBaseUser, PermissionsMixin):
-    id_user = models.AutoField(auto_created = True, primary_key = True, serialize = False, verbose_name = 'User_ID')
+    id_user = models.AutoField(auto_created = True, primary_key = True, serialize = False)
     rut_user = models.CharField('Rut del Usuario', unique = True, max_length = 50)
     perfil_user = models.ImageField('Imagen de Perfil', upload_to='perfil/', max_length=200, blank = True, null = True)
     nombre_user = models.CharField('Nombre del Usuario', max_length = 50)
     ape_paterno_user = models.CharField('Apellido Paterno', max_length = 100)
     ape_materno_user = models.CharField('Apellido Materno', max_length = 100)
     email_user = models.EmailField('Correo Electronico', unique = True, max_length = 255)
-    user_active = models.BooleanField('Esta activo',default = True)
-    user_administrador = models.BooleanField('Es administrador',default = False)
+    is_active = models.BooleanField('Esta activo',default = True)
+    is_staff = models.BooleanField('Es administrador',default = False)
     rol = (('socio', 'Socio'), ('cliente', 'Cliente'), ('guia', 'Guia'), ('trabajador', 'Trabajador'))
     rol_usuario = models.CharField(max_length=50, choices = rol, default = 'cliente')
     objects = UsuarioManager()
@@ -83,14 +85,14 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
 
     #lo que hace es que debe definirse para que AbstractBaseUser necesita diversas utilidades para que se pueda utilizar el modelo usuario en el admin django
     #es llamado por el admin django en la parte de los permisos de quien puede acceder o no al admin django
-    def has_perm(self, perm, obj = None):
-        return True
+    #def has_perm(self, perm, obj = None):
+    #    return True
     
     #esta funcion es para el admin django, ya que recibe la etiqueta de la aplicacion en la cual esta este modelo
-    def has_module_perms(self, app_label):
-        return True
+    #def has_module_perms(self, app_label):
+    #    return True
 
     #la funcion is_staff ya definida en el user natural django, y lo que hace es decir que si un usuario es administrador o no
-    @property
-    def is_staff(self):
-        return self.user_administrador
+    #@property
+    #def is_staff(self):
+    #    return self.user_administrador
