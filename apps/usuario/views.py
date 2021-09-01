@@ -34,7 +34,7 @@ def RegistrarUsuario(request):
         email_user = request.POST['email_user']
         password = request.POST['password']
 
-        if user_form.is_valid() :
+        if user_form.is_valid():
             user = user_form.save(commit=False)
             user.password = make_password(password) #Encriptación de contraseña
             user.save()
