@@ -3,7 +3,7 @@ from django.db.models.fields import CharField
 from django.forms import fields, widgets
 from apps.usuario.models import Usuario
 
-class FormularioUsuario(forms.ModelForm):
+class FormularioUsuario(forms.ModelForm): #Falta validar las contraseñas
     """
         Formulario de registro de un usuario en la base de datos
     
@@ -12,13 +12,13 @@ class FormularioUsuario(forms.ModelForm):
             password2: verificar contrasena 
     """
     
-    password1 = forms.CharField(
+    password = forms.CharField(
         label = 'contrasena',
         widget = forms.PasswordInput(
             attrs = {
                 'class':'form-control',
                 'placeholder':'ingrese su contrasena',
-                'id':'password1',
+                'id':'password',
                 'required':'required',
             }
         )
@@ -38,7 +38,7 @@ class FormularioUsuario(forms.ModelForm):
 
     class Meta:
         model = Usuario
-        fields = ('rut_user','nombre_user', 'email_user')
+        fields = ('rut_user','nombre_user', 'email_user', 'password')
         widgets = {
             'rut_user':forms.TextInput(
                 attrs = {
