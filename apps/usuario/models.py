@@ -64,7 +64,7 @@ class UsuarioManager(BaseUserManager):
 
 #heredamos el AbstractBaseUser en el modelo Usuario para definir los campos
 class Usuario(AbstractBaseUser, PermissionsMixin):
-    id_user = models.AutoField(auto_created = True, primary_key = True, serialize = False)
+    id_user = models.AutoField('ID usuario', auto_created = True, primary_key = True, serialize = False)
     rut_user = models.CharField('Rut del Usuario', unique = True, max_length = 50)
     perfil_user = models.ImageField('Imagen de Perfil', upload_to='perfil/', max_length=200, blank = True, null = True)
     nombre_user = models.CharField('Nombre del Usuario', max_length = 50)
