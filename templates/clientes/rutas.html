@@ -1,0 +1,44 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block extracss %}
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+{% endblock extracss %}
+
+{% block titulo %}
+    Rutas
+{% endblock titulo %}
+
+{% block body %}
+  <h4> HOLA MUNDO</h4>
+{% endblock body %}
+
+
+
+{% block footer %}
+    <footer class="footer">
+        <span> Derechos Reservados | Proyecto IVARAS &copy </span>
+    </footer>
+{% endblock footer %}
+
+
+<!--
+    1. crear urls.py en apps cliente
+    2. importar from django.urls import path en la urls de cliente
+    3. agregar urlpatterns en la urls.py de cliente
+    4. agregar ruta del urls.py de cliente, en la urls.py de la carpeta flashpackerpass
+    5. crear vista en la apps cliente importando el TEMPLATEVIEW (mas facil con clases, 2 lineas de codigo)
+    6. en urls.py de cliente, importamos la vista creada anteriormente
+    7. creamos la ruta correspondiente del template a visualizar
+    8. en index.html agregamos {% url 'clientes:rutascliente' %}
+
+    porque clientes:rutascliente, porque en la urls.py de la carpeta flashpackerpass, estamos incluyendo urls.py de cliente de la siguiente forma
+    
+    path('cliente/', include(('apps.cliente.urls', 'clientes'))),
+                                                    por este parametro, le damos un nombre a la ruta y asi saber de cual apps la estamos llamando, puede estar vacio, 
+                                            pero por mi parte, es mejor darle el nombre de la apps de la cual vienen esas urls
+
+
+        ESPERO HABERME EXPLICADO BIEN :(
+                    
+-->

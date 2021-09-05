@@ -20,5 +20,6 @@ from apps.base.views import Inicio
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('usuarios/', include(('apps.usuario.urls', 'usuario'))),
+    path('cliente/', include(('apps.cliente.urls', 'clientes'))),
     path('', Inicio.as_view(), name = 'index'),
 ]
